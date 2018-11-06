@@ -9,8 +9,9 @@ import {
   Nav,
   NavItem,
 } from 'reactstrap';
+import { connect } from 'react-redux'
 
-export default class TopNav extends React.Component {
+class TopNav extends React.Component {
   state = {
     isOpen: false
   }
@@ -20,23 +21,42 @@ export default class TopNav extends React.Component {
     });
   }
   render() {
+    const loginAndSignupLinks = (
+      <Nav className="ml-auto" navbar>
+        <NavItem>
+          <NavLink to="/login" className="nav-link" exact>Login</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/signup" className="nav-link">Signup</NavLink>
+        </NavItem>
+      </Nav>
+    );
+
+    const logoutLink = (
+      <Nav className="ml-auto" navbar>
+        <NavItem>
+          <NavLink to="/login" className="nav-link" exact>Logout</NavLink>
+        </NavItem>
+      </Nav>
+    );
+
     return (
       <div>
         <Navbar color="primary" dark expand="md">
           <NavbarBrand href="/">ProfileHub</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink to="/login" className="nav-link" exact>Login</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/signup" className="nav-link">Signup</NavLink>
-              </NavItem>
-            </Nav>
+            { this.props.user.name ? logoutLink : loginAndSignupLinks }
           </Collapse>
         </Navbar>
       </div>
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user,
+  }
+}
+
+export default connect(mapStateToProps, null)(TopNav)
