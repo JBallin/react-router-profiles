@@ -5,9 +5,13 @@ import {
   Col
 } from 'reactstrap'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 const UserProfile = (props) => {
-  console.log('up props', props)
+  if (!props.user.name) {
+    return <Redirect to="/login" />
+  }
+  const photo_url = props.user.photo_url || 'http://via.placeholder.com/350x450';
   return (
     <div>
       <Container>
