@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Button,
   Form,
@@ -63,7 +64,7 @@ class Login extends Component {
               <Button className="mr-3" type="submit" color="primary">
                 Submit
               </Button>
-              <a href="/signup">Not a member?</a>
+              <Link to="/signup">Not a member?</Link>
             </Form>
           </Col>
         </Row>
