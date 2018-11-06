@@ -28,6 +28,7 @@ export class Signup extends Component {
     password: '',
     verify_password: '',
     isSignedUp: false,
+    errorMessage: '',
   }
 
   getRandomImage = () => {
@@ -37,23 +38,41 @@ export class Signup extends Component {
     return fetch(IMAGE_API_URL).then(r => r.json());
   }
 
-  userSignup = async (e) => {
-    e.preventDefault()
-    let { name, email, company, phone, password, verify_password, address, photo_url } = this.state
-    if (!password || password !== verify_password || !verify_password) {
+  validateForm = () => {
+    let { password, verify_password } = this.state;
+    const fields = ["name", "email", "company", "phone", "address", "password", "verify_password"];
+    const missingFields = fields.reduce((missing, field) => {
+      return this.state[field] ? missing : missing.concat(field);
+    }, []);
+    if (missingFields.length) {
+      const errorMessage = `Missing Fields: ${missingFields.join(', ')}.`
+      this.setState({ errorMessage, isValid: false });
+      return false;
+    }
+
+    if (password !== verify_password) {
       this.setState({
         passwordClasses: this.state.passwordClasses + ' is-invalid',
-        isValid: false
-      })
-    } else {
-      if (!photo_url) {
-        const photo = await this.getRandomImage();
-        photo_url = photo.img_url;
-      }
-      let newUser = {name, email, company, phone, password, address, photo_url}
-      this.props.userSignup(newUser)
-      this.setState({ isSignedUp: true })
+        isValid: false,
+        errorMessage: "Passwords do not match"
+      });
+      return false;
     }
+
+    return true;
+  }
+
+  userSignup = async (e) => {
+    e.preventDefault()
+    if (!this.validateForm()) return;
+    let { name, email, company, phone, password, address, photo_url } = this.state;
+    if (!photo_url) {
+      const photo = await this.getRandomImage();
+      photo_url = photo.img_url;
+    }
+    let newUser = {name, email, company, phone, password, address, photo_url}
+    this.props.userSignup(newUser)
+    this.setState({ isSignedUp: true })
   }
 
   render() {
@@ -86,7 +105,6 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ name: e.target.value })
                   }
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -100,7 +118,6 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ email: e.target.value })
                   }
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -114,7 +131,6 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ company: e.target.value })
                   }
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -129,7 +145,6 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ phone: e.target.value })
                   }
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -143,7 +158,6 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ address: e.target.value })
                   }
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -170,7 +184,6 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ password: e.target.value })
                   }
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -184,10 +197,9 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ verify_password: e.target.value })
                   }
-                  required
                 />
                 {!this.state.isValid ? (
-                  <Alert color="danger">Passwords do not match</Alert>
+                  <Alert color="danger">{this.state.errorMessage}</Alert>
                 ) : null}
               </FormGroup>
               <Button color="primary" type="submit">
