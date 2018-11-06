@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from './components/Login'
+import AppRouter from './AppRouter'
 import TopNav from './components/TopNav'
 import './App.css'
 
@@ -7,7 +7,7 @@ export const App = () => {
   return (
     <div>
       <TopNav />
-      <Login/>
+      <AppRouter />
     </div>
   )
 }
