@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import {
   Button,
   Form,
@@ -18,10 +18,23 @@ import { userLogin } from '../actions/auth.actions'
 class Login extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    authenticated: false
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    await this.props.userLogin(this.state);
+    if (this.props.user.name) {
+      this.setState({ authenticated: true });
+    }
   }
 
   render() {
+    if (this.state.authenticated) {
+      return <Redirect to="/profile" />
+    }
+
     return (
       <Container className="main-wrapper">
         <Row style={{ marginTop: '15vh' }}>
@@ -33,7 +46,7 @@ class Login extends Component {
               boxShadow: '3px 3px 47px 0px rgba(0,0,0,0.5)'
             }}
           >
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Label for="email-field">Email</Label>
                 <Input
@@ -75,7 +88,8 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    showLoginError: state.auth.showLoginError
+    showLoginError: state.auth.showLoginError,
+    user: state.auth.user
   }
 }
 
