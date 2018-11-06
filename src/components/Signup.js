@@ -60,6 +60,9 @@ export class Signup extends Component {
     if (this.state.isSignedUp) {
       return <Redirect to="/login" />
     }
+
+    const redAsterisk = <span style={{color: 'red'}}>*</span>;
+
     return (
       <Container className="main-wrapper">
         <Row style={{ marginTop: '10vh', marginBottom: '10vh' }}>
@@ -73,7 +76,7 @@ export class Signup extends Component {
           >
             <Form onSubmit={this.userSignup}>
               <FormGroup>
-                <Label for="name">Name</Label>
+                <Label for="name">Name { redAsterisk }</Label>
                 <Input
                   type="text"
                   name="name"
@@ -87,7 +90,7 @@ export class Signup extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="email">Email</Label>
+                <Label for="email">Email { redAsterisk }</Label>
                 <Input
                   type="email"
                   name="email"
@@ -101,7 +104,7 @@ export class Signup extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="company">Company</Label>
+                <Label for="company">Company { redAsterisk }</Label>
                 <Input
                   type="text"
                   name="company"
@@ -115,7 +118,7 @@ export class Signup extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="name">Phone</Label>
+                <Label for="name">Phone { redAsterisk }</Label>
                 <Input
                   type="number"
                   name="phone"
@@ -129,7 +132,7 @@ export class Signup extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="address">Address</Label>
+                <Label for="address">Address { redAsterisk }</Label>
                 <Input
                   type="text"
                   name="address"
@@ -156,7 +159,7 @@ export class Signup extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="password">Password</Label>
+                <Label for="password">Password { redAsterisk }</Label>
                 <Input
                   type="password"
                   name="password"
@@ -170,7 +173,7 @@ export class Signup extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="verify_password">Verify Password</Label>
+                <Label for="verify_password">Verify Password { redAsterisk }</Label>
                 <Input
                   type="password"
                   name="password"
