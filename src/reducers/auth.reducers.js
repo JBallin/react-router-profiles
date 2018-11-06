@@ -26,7 +26,7 @@ export default(state = initialState, action) => {
     case USER_SIGNUP_PENDING:
       return {...state, isLoading: true, showLoginError: false}
     case USER_SIGNUP_SUCCESS:
-      return {...state, isLoading: false}
+      return {...state, isLoading: false, showLoginError: false}
     case USER_SIGNUP_FAILED:
       return {...state, isLoading: false, showSignupError: true}
     case USER_LOGOUT:
