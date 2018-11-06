@@ -8,13 +8,13 @@ export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED'
 
 export const USER_LOGOUT = 'USER_LOGOUT'
 
-const BASE_URL = 'http://localhost:8082'
+const API_URL = process.env.REACT_APP_API_URL
 
 export const userLogin = ({email, password}) => {
   return async (dispatch) => {
     try {
       dispatch({type: USER_LOGIN_PENDING})
-      let response = await fetch(`${BASE_URL}/api/login`, {
+      let response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({email, password})
@@ -37,7 +37,7 @@ export const userSignup = (newUser) => {
   return async (dispatch) => {
     try {
       dispatch({type: USER_LOGIN_PENDING})
-      let response = await fetch(`${BASE_URL}/api/users`, {
+      let response = await fetch(`${API_URL}/users`, {
         method: "POST",
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(newUser)
