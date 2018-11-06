@@ -24,13 +24,14 @@ export class Signup extends Component {
     company: '',
     phone: '',
     address: '',
+    photo_url: '',
     password: '',
     verify_password: '',
     isSignedUp: false,
   }
   userSignup = e => {
     e.preventDefault()
-    let { name, email, company, phone, password, verify_password, address } = this.state
+    let { name, email, company, phone, password, verify_password, address, photo_url } = this.state
     if (!password || password !== verify_password || !verify_password) {
       this.setState({
         passwordClasses: this.state.passwordClasses + ' is-invalid',
@@ -38,6 +39,7 @@ export class Signup extends Component {
       })
     } else {
       let newUser = {name, email, company, phone, password, address}
+      let newUser = {name, email, company, phone, password, address, photo_url}
       this.props.userSignup(newUser)
       this.setState({ isSignedUp: true })
     }
@@ -127,6 +129,19 @@ export class Signup extends Component {
                     this.setState({ address: e.target.value })
                   }
                   required
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="photo_url">Photo URL</Label>
+                <Input
+                  type="url"
+                  name="photo_url"
+                  id="photo-url"
+                  placeholder="photo url"
+                  value={this.state.photo_url}
+                  onChange={e =>
+                    this.setState({ photo_url: e.target.value })
+                  }
                 />
               </FormGroup>
               <FormGroup>
