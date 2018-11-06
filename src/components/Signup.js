@@ -120,10 +120,11 @@ export class Signup extends Component {
               <FormGroup>
                 <Label for="name">Phone { redAsterisk }</Label>
                 <Input
-                  type="number"
+                  type="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   name="phone"
                   id="phone-field"
-                  placeholder="phone"
+                  placeholder="123-456-7890"
                   value={this.state.phone}
                   onChange={e =>
                     this.setState({ phone: e.target.value })
