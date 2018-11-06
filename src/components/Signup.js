@@ -77,7 +77,7 @@ export class Signup extends Component {
 
   render() {
     if (this.state.isSignedUp) {
-      return <Redirect to="/login" />
+      return <Redirect push to="/login" />
     }
 
     const redAsterisk = <span style={{color: 'red'}}>*</span>;

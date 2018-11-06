@@ -32,7 +32,7 @@ class Login extends Component {
 
   render() {
     if (this.state.authenticated) {
-      return <Redirect to="/profile" />
+      return <Redirect push to="/profile" />
     }
 
     return (

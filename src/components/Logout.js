@@ -6,7 +6,7 @@ import { userLogout } from '../actions/auth.actions'
 
 const Logout = (props) => {
   props.userLogout();
-  return <Redirect to="/login" />;
+  return <Redirect push to="/login" />;
 }
 
 function mapDispatchToProps(dispatch) {

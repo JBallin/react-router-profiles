@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom'
 
 const UserProfile = (props) => {
   if (!props.user.email) {
-    return <Redirect to="/login" />
+    return <Redirect push to="/login" />
   }
   const photo_url = props.user.photo_url || 'http://via.placeholder.com/350x450';
   return (
