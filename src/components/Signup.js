@@ -13,6 +13,7 @@ import {
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { userSignup } from '../actions/auth.actions'
+import { Redirect } from 'react-router-dom'
 
 export class Signup extends Component {
   state = {
@@ -24,7 +25,8 @@ export class Signup extends Component {
     phone: '',
     address: '',
     password: '',
-    verify_password: ''
+    verify_password: '',
+    isSignedUp: false,
   }
   userSignup = e => {
     e.preventDefault()
@@ -36,12 +38,15 @@ export class Signup extends Component {
       })
     } else {
       let newUser = {name, email, company, phone, password, address}
-      console.log('newUser', newUser)
       this.props.userSignup(newUser)
+      this.setState({ isSignedUp: true })
     }
   }
 
   render() {
+    if (this.state.isSignedUp) {
+      return <Redirect to="/login" />
+    }
     return (
       <Container className="main-wrapper">
         <Row style={{ marginTop: '10vh', marginBottom: '10vh' }}>
