@@ -10,7 +10,7 @@ import {
   NavItem,
 } from 'reactstrap';
 
-export default class Example extends React.Component {
+export default class TopNav extends React.Component {
   state = {
     isOpen: false
   }
