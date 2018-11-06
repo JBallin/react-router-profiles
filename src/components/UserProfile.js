@@ -8,9 +8,13 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 const UserProfile = (props) => {
+  const pageTitle = 'User Profile';
+  document.title = `${pageTitle} | ProfileHub`;
+
   if (!props.user.email) {
     return <Redirect push to="/login" />
   }
+
   const photo_url = props.user.photo_url || 'http://via.placeholder.com/350x450';
   return (
     <div>

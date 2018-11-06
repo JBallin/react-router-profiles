@@ -31,6 +31,9 @@ class Login extends Component {
   }
 
   render() {
+    const pageTitle = 'Login';
+    document.title = `${pageTitle} | ProfileHub`;
+
     if (this.state.authenticated) {
       return <Redirect push to="/profile" />
     }

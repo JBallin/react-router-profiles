@@ -76,6 +76,9 @@ export class Signup extends Component {
   }
 
   render() {
+    const pageTitle = 'Signup';
+    document.title = `${pageTitle} | ProfileHub`;
+
     if (this.state.isSignedUp) {
       return <Redirect push to="/login" />
     }

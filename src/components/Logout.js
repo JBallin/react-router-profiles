@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux'
 import { userLogout } from '../actions/auth.actions'
 
 const Logout = (props) => {
+  const pageTitle = 'Logout';
+  document.title = `${pageTitle} | ProfileHub`;
+
   props.userLogout();
   return <Redirect push to="/login" />;
 }
