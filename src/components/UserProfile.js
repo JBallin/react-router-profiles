@@ -22,7 +22,10 @@ const UserProfile = (props) => {
         </Row>
         <Row style={{marginTop: 20}}>
           <Col>
-            <img src="http://via.placeholder.com/350x450" alt="profile" />
+            <img
+              src={photo_url}
+              alt="profile"
+            />
           </Col>
           <Col>
             <h3>Name: {props.user.name}</h3>
