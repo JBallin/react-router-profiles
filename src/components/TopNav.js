@@ -46,7 +46,7 @@ class TopNav extends React.Component {
           <NavbarBrand href="/">ProfileHub</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            { this.props.user.name ? logoutLink : loginAndSignupLinks }
+            { this.props.user.email ? logoutLink : loginAndSignupLinks }
           </Collapse>
         </Navbar>
       </div>

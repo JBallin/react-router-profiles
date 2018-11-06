@@ -25,7 +25,7 @@ class Login extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     await this.props.userLogin(this.state);
-    if (this.props.user.name) {
+    if (this.props.user.email) {
       this.setState({ authenticated: true });
     }
   }

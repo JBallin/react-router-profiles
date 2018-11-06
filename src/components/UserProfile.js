@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 const UserProfile = (props) => {
-  if (!props.user.name) {
+  if (!props.user.email) {
     return <Redirect to="/login" />
   }
   const photo_url = props.user.photo_url || 'http://via.placeholder.com/350x450';
