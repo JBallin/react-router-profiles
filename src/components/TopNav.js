@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import {
   Collapse,
@@ -7,7 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink } from 'reactstrap';
+} from 'reactstrap';
 
 export default class Example extends React.Component {
   state = {
@@ -27,10 +28,10 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <a href="#" className="nav-link">Login</a>
+                <NavLink to="/" className="nav-link" exact>Login</NavLink>
               </NavItem>
               <NavItem>
-                <a href="#" className="nav-link">Signup</a>
+                <NavLink to="/signup" className="nav-link">Signup</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
