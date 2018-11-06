@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom'
 import { Container } from 'reactstrap'
 
 import Login from './components/Login'
+import Logout from './components/Logout'
 import Signup from './components/Signup'
 import UserProfile from './components/UserProfile'
 
@@ -16,6 +17,7 @@ const AppRouter = () => (
   <Switch>
     <Route path='/' exact render={() => <Redirect to="/login" />} />
     <Route path='/login' component={Login} />
+    <Route path='/logout' component={Logout} />
     <Route path='/signup' component={Signup} />
     <Route path='/profile' component={UserProfile} />
     <Route component={NoMatch} />

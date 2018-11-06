@@ -35,7 +35,7 @@ class TopNav extends React.Component {
     const logoutLink = (
       <Nav className="ml-auto" navbar>
         <NavItem>
-          <NavLink to="/login" className="nav-link" exact>Logout</NavLink>
+          <NavLink to="/logout" className="nav-link" exact>Logout</NavLink>
         </NavItem>
       </Nav>
     );
