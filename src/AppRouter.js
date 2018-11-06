@@ -1,17 +1,11 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
-import { Container } from 'reactstrap'
 
 import Login from './components/Login'
 import Logout from './components/Logout'
 import Signup from './components/Signup'
 import UserProfile from './components/UserProfile'
-
-const NoMatch = () => (
-  <Container className="main-wrapper mt-5">
-    <h3>404: Not Found</h3>
-  </Container>
-);
+import NoMatch from './components/NoMatch'
 
 const AppRouter = () => (
   <Switch>
