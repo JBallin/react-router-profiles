@@ -29,7 +29,15 @@ export class Signup extends Component {
     verify_password: '',
     isSignedUp: false,
   }
-  userSignup = e => {
+
+  getRandomImage = () => {
+    const API_URL = process.env.REACT_APP_API_URL;
+    const [width, height] = [350, 450];
+    const IMAGE_API_URL = `${API_URL}/random-image?w=${width}&h=${height}`
+    return fetch(IMAGE_API_URL).then(r => r.json());
+  }
+
+  userSignup = async (e) => {
     e.preventDefault()
     let { name, email, company, phone, password, verify_password, address, photo_url } = this.state
     if (!password || password !== verify_password || !verify_password) {
@@ -38,7 +46,10 @@ export class Signup extends Component {
         isValid: false
       })
     } else {
-      let newUser = {name, email, company, phone, password, address}
+      if (!photo_url) {
+        const photo = await this.getRandomImage();
+        photo_url = photo.img_url;
+      }
       let newUser = {name, email, company, phone, password, address, photo_url}
       this.props.userSignup(newUser)
       this.setState({ isSignedUp: true })
