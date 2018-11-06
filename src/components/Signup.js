@@ -65,6 +65,7 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ name: e.target.value })
                   }
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -78,9 +79,10 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ email: e.target.value })
                   }
+                  required
                 />
               </FormGroup>
-               <FormGroup>
+              <FormGroup>
                 <Label for="company">Company</Label>
                 <Input
                   type="text"
@@ -91,12 +93,13 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ company: e.target.value })
                   }
+                  required
                 />
               </FormGroup>
               <FormGroup>
                 <Label for="name">Phone</Label>
                 <Input
-                  type="text"
+                  type="number"
                   name="phone"
                   id="phone-field"
                   placeholder="phone"
@@ -104,6 +107,7 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ phone: e.target.value })
                   }
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -117,6 +121,7 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ address: e.target.value })
                   }
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -130,6 +135,7 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ password: e.target.value })
                   }
+                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -143,6 +149,7 @@ export class Signup extends Component {
                   onChange={e =>
                     this.setState({ verify_password: e.target.value })
                   }
+                  required
                 />
                 {!this.state.isValid ? (
                   <Alert color="danger">Passwords do not match</Alert>
