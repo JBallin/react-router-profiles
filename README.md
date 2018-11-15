@@ -19,3 +19,7 @@ Note: [API](https://github.com/JBallin/g-api) must be running as well.
 Email: carpenterwatts@enerforce.com
 Password: hello
 ```
+
+### External API's
+
+Backend uses the [Unsplash API](https://unsplash.com/developers) to generate a URL for a random photo if you don't include one when signing up.
