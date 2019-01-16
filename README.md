@@ -3,6 +3,11 @@
 ## Description
 Basic site supporting login and profiles that stores data in-memory using an [API](https://github.com/JBallin/g-api) provided by Galvanize (with some modifications).
 
+## Screenshots
+![login](screenshots/1_login.png?raw=true "login")
+![signup](screenshots/2_signup.png?raw=true "signup")
+![profile](screenshots/3_profile.png?raw=true "profile")
+
 ## Usage
 ```shell
 $ npm install
