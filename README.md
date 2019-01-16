@@ -1,7 +1,7 @@
 # React Router Checkpoint
 
 ## Description
-Basic site supporting login and profiles that stores data in-memory using an [API](https://github.com/JBallin/g-api) provided by Galvanize (with some modifications).
+Basic React app, with React Router, supporting login and profiles that stores data in-memory using an [API](https://github.com/JBallin/g-api) provided by Galvanize (with some modifications).
 
 ## Screenshots
 ![login](screenshots/1_login.png?raw=true "login")
